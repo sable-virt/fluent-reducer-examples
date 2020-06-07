@@ -13,6 +13,9 @@ export class RootStateService {
       this._subject.next(state)
     })
   }
+  getState() {
+    return rootReducer.getState()
+  }
   get subject() {
     return this._subject
   }

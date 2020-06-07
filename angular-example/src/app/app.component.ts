@@ -11,22 +11,23 @@ import { IRootState } from '../reducers/RootState'
 })
 export class AppComponent {
   title = 'angular-example'
-  state: IRootState = rootReducer.getState()
+  state: IRootState
   constructor(public rootStateService: RootStateService) {
-    rootReducer.subscribe((state) => {
-      this.state = state
+    this.state = rootReducer.getState()
+    rootStateService.subject.subscribe((nextState) => {
+      this.state = nextState
     })
   }
   _handleOnChangeName(e: Event) {
     const target = e.target as HTMLInputElement
-    rootReducer.dispatch(changeName(target.value))
+    this.rootStateService.changeName(target.value)
   }
   _handleOnChangeAge(e: Event) {
     const target = e.target as HTMLInputElement
-    rootReducer.dispatch(changeAge(parseInt(target.value, 10)))
+    this.rootStateService.changeAge(parseInt(target.value, 10))
   }
   _handleOnSave(e: Event) {
     e.preventDefault()
-    rootReducer.dispatch(save())
+    this.rootStateService.save()
   }
 }
