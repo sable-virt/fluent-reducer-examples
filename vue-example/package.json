@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "fluent-reducer": "^2.0.0",
-    "immer": "^6.0.9",
+    "immer": "^9.0.6",
     "vue": "^2.6.11",
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2"
